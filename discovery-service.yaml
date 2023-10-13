@@ -1,0 +1,25 @@
+spring:
+  application:
+    name: discovery-service
+  security:
+    user:
+      name: discUser
+      password: discPassword
+
+eureka:
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+    service-url:
+      defaultZone: http://${spring.security.user.name}:${spring.security.user.password}@localhost:${server.port}/eureka/
+
+server:
+  port: 8761
+
+management:
+  tracing:
+    sampling:
+      probability: 1.0
+  zipkin:
+    tracing:
+      endpoint: http://localhost:9411/api/v2/spans

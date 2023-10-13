@@ -1,0 +1,17 @@
+spring:
+  data:
+    redis:
+      host: redis
+  datasource:
+    url: jdbc:postgresql://popcorn_db_postgres:5432/store_service?currentSchema=store
+
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://discUser:discPassword@discovery-service:8761/eureka/
+
+management:
+  zipkin:
+    tracing:
+      endpoint: http://zipkin:9411/api/v2/spans

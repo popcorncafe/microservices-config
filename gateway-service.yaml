@@ -1,0 +1,56 @@
+spring:
+  application:
+    name: gateway-service
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+          lower-case-service-id: true
+      routes:
+        - id: store-service-url
+          uri: lb://STORE-SERVICE
+          predicates:
+            - Path=/api/v1/stores/**
+          filters:
+            - RewritePath=/api/v1/stores/(?<segment>.*), /$\{segment}
+        - id: client-service-url
+          uri: lb://CLIENT-SERVICE
+          predicates:
+            - Path=/api/v1/clients/**
+          filters:
+            - RewritePath=/api/v1/clients/(?<segment>.*), /$\{segment}
+        - id: employee-service-url
+          uri: lb://EMPLOYEE-SERVICE
+          predicates:
+            - Path=/api/v1/employees/**
+          filters:
+            - RewritePath=/api/v1/employees/(?<segment>.*), /$\{segment}
+        - id: info-table-url
+          uri: lb://INFORMATION-TABLE
+          predicates:
+            - Path=/api/v1/info-table/**
+          filters:
+            - RewritePath=/api/v1/info-table/(?<segment>.*), /$\{segment}
+        - id: report-service-url
+          uri: lb://REPORT-SERVICE
+          predicates:
+            - Path=/api/v1/reports/**
+          filters:
+            - RewritePath=/api/v1/reports/(?<segment>.*), /$\{segment}
+
+server:
+  port: 8080
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://discUser:discPassword@localhost:8761/eureka/
+
+management:
+  tracing:
+    sampling:
+      probability: 1.0
+  zipkin:
+    tracing:
+      endpoint: http://localhost:9411/api/v2/spans

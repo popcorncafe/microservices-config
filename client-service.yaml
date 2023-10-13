@@ -1,0 +1,24 @@
+spring:
+  application:
+    name: client-service
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/client_service?currentSchema=client
+    username: client_service
+    password: ZGZnZXNyd2VyMzJyZmNld2R3
+
+server:
+  port: 8092
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://discUser:discPassword@localhost:8761/eureka/
+
+management:
+  tracing:
+    sampling:
+      probability: 1.0
+  zipkin:
+    tracing:
+      endpoint: http://localhost:9411/api/v2/spans
