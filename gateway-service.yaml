@@ -38,6 +38,8 @@ spring:
             - Path=/api/v1/reports/**
           filters:
             - RewritePath=/api/v1/reports/(?<segment>.*), /$\{segment}
+  main:
+    banner-mode: off
 
 server:
   port: 8080

@@ -22,7 +22,8 @@ spring:
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
       value-serializer: org.apache.kafka.common.serialization.StringSerializer
     bootstrap-servers: ${KAFKA_HOST}:9092
-
+  main:
+    banner-mode: off
 
 server:
   port: 8093

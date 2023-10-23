@@ -5,7 +5,8 @@ spring:
     user:
       name: discUser
       password: discPassword
-
+  main:
+    banner-mode: off
 eureka:
   client:
     register-with-eureka: false

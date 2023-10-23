@@ -6,6 +6,8 @@ spring:
     url: jdbc:postgresql://localhost:5432/client_service?currentSchema=client
     username: client_service
     password: ZGZnZXNyd2VyMzJyZmNld2R3
+  main:
+    banner-mode: off
 
 server:
   port: 8092

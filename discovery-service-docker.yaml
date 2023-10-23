@@ -2,7 +2,6 @@ eureka:
   client:
     service-url:
       defaultZone: http://${spring.security.user.name}:${spring.security.user.password}@discovery-service:${server.port}/eureka/
-
 management:
   zipkin:
     tracing:
